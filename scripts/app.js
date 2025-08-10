@@ -52,8 +52,32 @@ const app = Vue.createApp({
         .catch(error => {
             console.log(error);
         })
+    },
+    fetchWeatherData(){
+        fetch(`https://comp6062.liamstewart.ca/weather-data?city=${this.weatherForm.city}&province=${this.weatherForm.province}&country=${this.weatherForm.country}`)
+        .then((response) => response.json())
+        .then((data) => {
+          this.weather.temperature =data.temperature;
+          this.weather.wind = data.wind_speed;
+          this.weather.description = data.weather_description;
+        })
+        .catch((error) => {
+          console.log("Weather API error:", error);
+        });
+    },
+    fetchdDictData(){
+
+        fetch(`https://comp6062.liamstewart.ca/api/define?word=${this.dictForm.word}`)
+        .then((response) => response.json())
+        .then((data) => {
+        this.dict.word = data.word;
+        this.dict.phonetic = data.phonetic;
+        this.dict.definition = data.definition;
+        }
+        )},
+
     }
-  }
+
 });
 
 app.mount('#app');

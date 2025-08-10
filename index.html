@@ -6,31 +6,43 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body class="container">
-        <div class="app">
+        <div id="app">
         <header>
             <h1>Mohammed al fahad 1243998</h1>
         </header>
         <main>
             <div class="row">
-            <div class="col-md-4 box">
-            <h2 class="secondaryHeading">Random User Profile</h2>
-            <img :src="user.avatar" alt="Avatar" width="72" height="72" />
-            <div>
-            <div>{{ user.fullName }}</div>
-            <div>Age: {{ user.age }}</div>
-            <button @click="fetchUserData">
-            Next User Profile
-            </button>
+                <div class="col-md-4 box">
+                <h2 class="secondaryHeading">Random User Profile</h2>
+                <img :src="user.avatar" alt="Avatar" width="72" height="72" />
+                    <div>
+                        <p>Name: {{ user.fullName }}</p>
+                        <p>Age: {{ user.age }}</p>
+                        <button @click="fetchUserData">
+                        Next User Profile
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 box">
+                    <h2 class="secondaryHeading">Weather Module</h2>
+                    <input v-model="weatherForm.city" placeholder="City" />
+                    <input v-model="weatherForm.province" placeholder="Province" />
+                    <input v-model="weatherForm.country" placeholder="Country" />
+                    <button @click="fetchWeatherData">Get Weather Data</button>
+
+                    <p class="mt-2">Temperature: {{ weather.temperature }}</p>
+                    <p>Wind: {{ weather.wind }}</p>
+                    <p>Description: {{ weather.description }}</p>
+                </div>
+                <div class="col-md-4 box">
+                    <h2 class="secondaryHeading">Dictionary</h2>
+                    <input v-model="dictForm.word" placeholder="Enter a word" />
+                    <button @click="fetchdDictData">Define Word</button>
+                    <p>Word: {{ dict.word }}</p>
+                    <p>Phonetic: {{ dict.phonetic }}</p>
+                    <p>Definition: {{ dict.definition }}</p>
+                </div>
             </div>
-            </div>
-            </div>
-            <div class="col-md-4 box">
-            <h2 class="secondaryHeading">Weather Module</h2>
-            </div>
-            <div class="col-md-4 box">
-            <h2 class="secondaryHeading">Dictionary</h2>
-            </div>
-            </div> 
         </main>
         <footer>
             &copy; 2025 Mohammed al fahad-1243998
