@@ -23,7 +23,7 @@ const app = Vue.createApp({
 
       // Dictionary state
       dictForm: {
-        word: "",
+        word: "Dog",
       },
       dict: {
         word: "",
@@ -44,7 +44,7 @@ const app = Vue.createApp({
             return response.json();
         })
         .then(data => {
-
+            console.log('user API response:', data);
             this.user.fullName = `${data.first_name} ${data.last_name}`;
             this.user.age = data.age;
             this.user.avatar =data.avatar_url;
@@ -57,9 +57,10 @@ const app = Vue.createApp({
         fetch(`https://comp6062.liamstewart.ca/weather-data?city=${this.weatherForm.city}&province=${this.weatherForm.province}&country=${this.weatherForm.country}`)
         .then((response) => response.json())
         .then((data) => {
-          this.weather.temperature =data.temperature;
-          this.weather.wind = data.wind_speed;
-          this.weather.description = data.weather_description;
+                console.log('user API response:', data);
+                this.weather.temperature =data.temperature;
+                this.weather.wind = data.wind_speed;
+                this.weather.description = data.weather_description;
         })
         .catch((error) => {
           console.log("Weather API error:", error);
@@ -70,9 +71,10 @@ const app = Vue.createApp({
         fetch(`https://comp6062.liamstewart.ca/api/define?word=${this.dictForm.word}`)
         .then((response) => response.json())
         .then((data) => {
-        this.dict.word = data.word;
-        this.dict.phonetic = data.phonetic;
-        this.dict.definition = data.definition;
+            console.log('user API response:', data);
+            this.dict.word = data.word;
+            this.dict.phonetic = data.phonetic;
+            this.dict.definition = data.definition;
         }
         )},
 
