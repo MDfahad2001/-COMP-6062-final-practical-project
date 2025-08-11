@@ -3,7 +3,11 @@ const app = Vue.createApp({
   {
     return {
       // Random User state
-      user: "",
+      user: {
+        name:"",
+        age:"",
+        avatar:"",
+      },
 
       // Weather state
       weatherForm: {
@@ -11,7 +15,11 @@ const app = Vue.createApp({
         province: "Ontario",
         country: "Canada",
       },
-      weather:"",
+      weather:{
+        temperature:"",
+        wind:"",
+        weatherDescription :"",
+      },
 
       // Dictionary state
       dictForm: {
@@ -43,7 +51,9 @@ const app = Vue.createApp({
           }
         })
         .then(data => {
-        this.user = data;
+        this.user.name = `${data.user_profile.first_name}${data.user_profile.last_name}`;
+        this.user.age = data.user_profile.age;
+        this.user.avatar =data.user_profile.avatar_url;
         })
         .catch(error => {
         console.log(error);
@@ -54,7 +64,9 @@ const app = Vue.createApp({
         fetch(`https://comp6062.liamstewart.ca/weather-data?city=${this.weatherForm.city}&province=${this.weatherForm.province}&country=${this.weatherForm.country}`)
         .then((response) => response.json())
         .then((data) => {
-                this.weather = data;
+                this.weather.temperature = data.weather_data.temperature;
+                this.weather.wind = data.weather_data.wind_speed;
+                this.weather.weatherDescription=data.weather_data.weather_description;
         })
         .catch((error) => {
           console.log("Weather API error:", error);

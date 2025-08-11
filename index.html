@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-md-4 box">
                 <h2 class="secondaryHeading">Random User Profile</h2>
-                <img :src="user.user_profile.avatar_url" alt="Avatar" width="72" height="72" />
+                <img :src="user.avatar" alt="Avatar" width="72" height="72" />
                     <div>
-                        <p>Name: {{ user.user_profile.first_name }}{{ user.user_profile.last_name }}</p>
-                        <p>Age: {{ user.user_profile.age }}</p>
+                        <p>Name: {{ user.name}}</p>
+                        <p>Age: {{ user.age}}</p>
                         <button @click="fetchUserData">
                         Next User Profile
                         </button>
@@ -30,9 +30,9 @@
                     <div><input v-model="weatherForm.country" placeholder="Country" /></div>
                     <button @click="fetchWeatherData">Get Weather Data</button>
 
-                    <p>Temperature: {{ weather.weather_data.temperature }}</p>
-                    <p>Wind: {{ weather.weather_data.wind_speed }}</p>
-                    <p>Description: {{ weather.weather_data.weather_description }}</p>
+                    <p>Temperature: {{ weather.temperature }}</p>
+                    <p>Wind: {{ weather.wind }}</p>
+                    <p>Description: {{ weather.weatherDescription }}</p>
                 </div>
                 <div class="col-md-4 box">
                     <h2 class="secondaryHeading">Dictionary</h2>
